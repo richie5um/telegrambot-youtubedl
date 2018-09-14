@@ -3,11 +3,11 @@ const bot = new TeleBot('614327753:AAEeXj1rF4B1OPbFpnDl-t1Uk6sp1YLv84I');
 
 var exec = require('child_process').exec;
 
-command = './wifi-stats.sh';
-
 bot.on('text', (msg) => {
-    if ('wifi' === msg.text) {
+    if (msg.text.startsWith('youtube-dl')) {
         console.log(process.cwd());
+        console.log(msg.text);
+        command = msg.text;
         exec(command,
             function (error, stdout, stderr) {
                 msg.reply.text(stdout);
